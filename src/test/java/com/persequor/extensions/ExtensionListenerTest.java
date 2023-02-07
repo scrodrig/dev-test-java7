@@ -44,7 +44,7 @@ public class ExtensionListenerTest {
     @Test
     public void happyPath() {
         listener.handle(event, 32);
-
+        
         verify(extension1).execute(any());
         verify(extension2).execute(any());
     }
@@ -52,7 +52,6 @@ public class ExtensionListenerTest {
     @Test
     public void isNotConfigured() {
         configurations.remove(extension2.getClass());
-
         listener.handle(event, 32);
 
         verify(extension1).init(any());
