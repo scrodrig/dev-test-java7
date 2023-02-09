@@ -1,6 +1,6 @@
 package com.persequor;
 
-import com.persequor.broker.EventQueue;
+import com.persequor.broker.IEventQueue;
 import com.persequor.exceptions.EventServiceException;
 import com.persequor.model.Event;
 
@@ -10,9 +10,9 @@ import com.persequor.model.Event;
  */
 public class EventService {
 
-   private EventQueue eventQueue;
+   private IEventQueue eventQueue;
 
-    public EventService(EventQueue eventQueue) {
+    public EventService(IEventQueue eventQueue) {
         this.eventQueue = eventQueue;
     }
 
