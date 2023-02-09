@@ -1,16 +1,16 @@
 package com.persequor.ioc;
 
 import com.persequor.EventService;
-import com.persequor.broker.EventListener;
-import com.persequor.broker.EventQueue;
+import com.persequor.broker.IEventListener;
+import com.persequor.broker.IEventQueue;
 import com.persequor.broker.EventStorageListener;
 import com.persequor.broker.StatisticsListener;
-import com.persequor.repository.EventRepository;
-import com.persequor.repository.StatisticsRepository;
+import com.persequor.repository.IEventRepository;
+import com.persequor.repository.IStatisticsRepository;
 
 public class Ioc {
 	public void initializeQueues() {
-		EventQueue eventQueue = getEventQueue();
+		IEventQueue eventQueue = getEventQueue();
 		eventQueue.addListener("persist-queue", getEventStorageListener());
 		eventQueue.addListener("statistics", getStatisticsListener());
 		eventQueue.addListener("subscription", getSubscriptionListener());
@@ -28,19 +28,19 @@ public class Ioc {
 		return new StatisticsListener(getEventQueue(), getStatisticsRepository());
 	}
 
-	public EventListener getSubscriptionListener() {
+	public IEventListener getSubscriptionListener() {
 		return null; // This listener is currently out of scope
 	}
 
-	private StatisticsRepository getStatisticsRepository() {
+	private IStatisticsRepository getStatisticsRepository() {
 		return null; // In the real system an actual repository implementation is returned, but for the exercise we just pretend
 	}
 
-	private EventRepository getEventRepository() {
+	private IEventRepository getEventRepository() {
 		return null; // In the real system an actual repository implementation is returned, but for the exercise we just pretend
 	}
 
-	private EventQueue getEventQueue() {
+	private IEventQueue getEventQueue() {
 		return null; // In the real system an actual queue implementation is returned, but for the exercise we just pretend
 	}
 }
